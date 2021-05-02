@@ -1,4 +1,3 @@
-const { request, response } = require('express');
 const express = require('express');
 const app = express()
 const cors = require('cors')
@@ -90,6 +89,7 @@ app.post('/api/notes',(req,res) => {
 
 
 const PORT = process.env.PORT || 3001
+
 app.listen(PORT,() => {
     console.log(`server running at port ${PORT}`)
 })
