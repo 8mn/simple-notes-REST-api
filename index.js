@@ -1,9 +1,13 @@
 const { request, response } = require('express');
 const express = require('express');
 const app = express()
+const cors = require('cors')
 
 
-app.use(express.json())
+
+
+
+app.use(express.json(),cors())
 
 
 let notes = [  
@@ -50,7 +54,7 @@ app.get('/api/notes/:id',(req,res) => {
 
 app.delete('api/notes/delete/:id',(req,res) => {
     const id = Number(req.params.id)
-    notes = motes.filter(note => note.id !== id)
+    notes = notes.filter(note => note.id !== id)
 
     res.status(204).end()
 })
@@ -64,7 +68,7 @@ const generateId = () => {
 }
 
 app.post('/api/notes',(req,res) => {
-    body = req.body
+    const body = req.body
 
     if(!body.content){
         return res.status(400).json({
@@ -85,7 +89,7 @@ app.post('/api/notes',(req,res) => {
 
 
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT,() => {
     console.log(`server running at port ${PORT}`)
 })
