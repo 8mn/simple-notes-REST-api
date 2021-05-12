@@ -52,6 +52,10 @@ app.get('/api/notes/:id',(req,res) => {
     }
 })
 
+// app.patch('/api/notes/:id',(req,res) => {
+//     const id = Number(req.params.id)
+// })
+
 app.delete('api/notes/delete/:id',(req,res) => {
     const id = Number(req.params.id)
     notes = notes.filter(note => note.id !== id)
